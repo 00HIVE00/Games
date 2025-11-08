@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inside Out 2: Halloween Edition</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="spooky-title">Inside Out 2</h1>
+            <h2 class="subtitle">Halloween Edition</h2>
+            <p class="tagline">When Emotions Get Spooky...</p>
+        </header>
+
+        <section class="emotions-section">
+            <div class="emotion-card" data-emotion="joy">
+                <div class="emotion-icon">😊</div>
+                <h3>Joy</h3>
+                <p class="spooky">...turns into Trick-or-Treating Delight!</p>
+            </div>
+
+            <div class="emotion-card" data-emotion="sadness">
+                <div class="emotion-icon">😢</div>
+                <h3>Sadness</h3>
+                <p class="spooky">...becomes a Haunted Melancholy</p>
+            </div>
+
+            <div class="emotion-card" data-emotion="anger">
+                <div class="emotion-icon">😠</div>
+                <h3>Anger</h3>
+                <p class="spooky">...ignites into Halloween Fury</p>
+            </div>
+
+            <div class="emotion-card" data-emotion="fear">
+                <div class="emotion-icon">😨</div>
+                <h3>Fear</h3>
+                <p class="spooky">...embraces the Night of Frights!</p>
+            </div>
+
+            <div class="emotion-card" data-emotion="disgust">
+                <div class="emotion-icon">🤢</div>
+                <h3>Disgust</h3>
+                <p class="spooky">...shudders at Scary Surprises</p>
+            </div>
+
+            <div class="emotion-card" data-emotion="anxiety">
+                <div class="emotion-icon">😰</div>
+                <h3>Anxiety</h3>
+                <p class="spooky">...worries about the Spooky Night!</p>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <h2>The Spooky Mind Adventure</h2>
+            <p>This Halloween, join Riley's emotions as they navigate through a haunted mind filled with spooky memories, creepy core memories, and mysterious new emotions that only appear when the moon is full!</p>
+        </section>
+
+        <section class="quiz-section">
+            <h2>🎃 Discover Your Halloween Emotions 🎃</h2>
+            <div id="quizContainer">
+                <div id="progressBar" class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <div id="questionNumber" class="question-number">Question 1 of 5</div>
+                <div id="questionContainer" class="quiz-content">
+                    <h3 id="questionText"></h3>
+                    <div class="quiz-options" id="quizOptions"></div>
+                    <div class="quiz-navigation">
+                        <button class="nav-button" id="prevButton" style="display: none;">← Previous</button>
+                        <button class="nav-button" id="nextButton" style="display: none;">Next →</button>
+                    </div>
+                </div>
+                <div id="answerContainer" class="result-hidden">
+                    <h3>Your Related Emotions:</h3>
+                    <div id="emotionResults"></div>
+                    <button class="spooky-button" id="resetButton">Try Again</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-section">
+            <button class="spooky-button" id="revealButton">Reveal Your Halloween Emotion</button>
+            <div id="result" class="result-hidden"></div>
+        </section>
+
+        <section class="games-section">
+            <h2>🎮 Halloween Games 🎮</h2>
+            
+            <div class="game-tabs">
+                <button class="game-tab active" data-game="tictactoe">🎃 Tic Tac Toe</button>
+                <button class="game-tab" data-game="memory">🧠 Memory Match</button>
+                <button class="game-tab" data-game="rps">✂️ Rock Paper Scissors</button>
+                <button class="game-tab" data-game="guess">🎲 Number Guess</button>
+                <button class="game-tab" data-game="snake">🐍 Snake</button>
+                <button class="game-tab" data-game="whack">👊 Whack-a-Ghost</button>
+                <button class="game-tab" data-game="simon">🎵 Simon Says</button>
+                <button class="game-tab" data-game="reaction">⚡ Reaction Test</button>
+                <button class="game-tab" data-game="scramble">🔤 Word Scramble</button>
+                <button class="game-tab" data-game="clicker">🎃 Pumpkin Clicker</button>
+                <button class="game-tab" data-game="pacman">👻 Pacman</button>
+                <button class="game-tab" data-game="falling">🍬 Falling Candy</button>
+                <button class="game-tab" data-game="invaders">👾 Ghost Invaders</button>
+                <button class="game-tab" data-game="shooter">🔫 Shooter</button>
+            </div>
+
+            <!-- Tic Tac Toe Game -->
+            <div class="game-container active" id="tictactoe-game">
+                <h3>🎃 Tic Tac Toe 👻</h3>
+                <p class="game-description">Play as 🎃 (Pumpkin) or 👻 (Ghost)! Get three in a row to win!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span id="currentPlayer">Current Player: 🎃</span>
+                    </div>
+                    <div class="game-status" id="gameStatus"></div>
+                    <button class="spooky-button" id="resetGameBtn">🔄 New Game</button>
+                </div>
+                
+                <div class="tic-tac-toe-board" id="gameBoard">
+                    <div class="cell" data-cell="0"></div>
+                    <div class="cell" data-cell="1"></div>
+                    <div class="cell" data-cell="2"></div>
+                    <div class="cell" data-cell="3"></div>
+                    <div class="cell" data-cell="4"></div>
+                    <div class="cell" data-cell="5"></div>
+                    <div class="cell" data-cell="6"></div>
+                    <div class="cell" data-cell="7"></div>
+                    <div class="cell" data-cell="8"></div>
+                </div>
+            </div>
+
+            <!-- Memory Match Game -->
+            <div class="game-container" id="memory-game">
+                <h3>🧠 Memory Match 👻</h3>
+                <p class="game-description">Match pairs of Halloween emojis! Find all pairs to win!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Moves: <span id="memoryMoves">0</span></span>
+                        <span>Pairs Found: <span id="memoryPairs">0</span>/8</span>
+                    </div>
+                    <div class="game-status" id="memoryStatus"></div>
+                    <button class="spooky-button" id="resetMemoryBtn">🔄 New Game</button>
+                </div>
+                
+                <div class="memory-board" id="memoryBoard"></div>
+            </div>
+
+            <!-- Rock Paper Scissors Game -->
+            <div class="game-container" id="rps-game">
+                <h3>✂️ Rock Paper Scissors 🎃</h3>
+                <p class="game-description">Choose 🎃 🧙‍♀️ or 👻 to beat the computer!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Wins: <span id="rpsWins">0</span></span>
+                        <span>Losses: <span id="rpsLosses">0</span></span>
+                        <span>Ties: <span id="rpsTies">0</span></span>
+                    </div>
+                    <div class="game-status" id="rpsStatus">Choose your emoji!</div>
+                    <button class="spooky-button" id="resetRpsBtn">🔄 Reset Score</button>
+                </div>
+                
+                <div class="rps-container">
+                    <div class="rps-choice-container">
+                        <div class="rps-choice-display" id="playerChoice">?</div>
+                        <p>You</p>
+                    </div>
+                    <div class="rps-vs">VS</div>
+                    <div class="rps-choice-container">
+                        <div class="rps-choice-display" id="computerChoice">?</div>
+                        <p>Computer</p>
+                    </div>
+                </div>
+                
+                <div class="rps-buttons">
+                    <button class="rps-btn" data-choice="🎃">🎃</button>
+                    <button class="rps-btn" data-choice="🧙‍♀️">🧙‍♀️</button>
+                    <button class="rps-btn" data-choice="👻">👻</button>
+                </div>
+            </div>
+
+            <!-- Number Guess Game -->
+            <div class="game-container" id="guess-game">
+                <h3>🎲 Guess the Number 👻</h3>
+                <p class="game-description">Guess the spooky number between 1 and 100!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Attempts: <span id="guessAttempts">0</span></span>
+                        <span id="guessRange">Range: 1 - 100</span>
+                    </div>
+                    <div class="game-status" id="guessStatus">Enter your guess!</div>
+                    <button class="spooky-button" id="resetGuessBtn">🔄 New Number</button>
+                </div>
+                
+                <div class="guess-container">
+                    <input type="number" id="guessInput" min="1" max="100" placeholder="Enter number">
+                    <button class="spooky-button" id="guessSubmitBtn">🎯 Guess!</button>
+                </div>
+                
+                <div class="guess-hints" id="guessHints"></div>
+            </div>
+
+            <!-- Snake Game -->
+            <div class="game-container" id="snake-game">
+                <h3>🐍 Halloween Snake 🎃</h3>
+                <p class="game-description">Control the snake with arrow keys or buttons. Eat 🎃 to grow longer!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Score: <span id="snakeScore">0</span></span>
+                        <span>Length: <span id="snakeLength">1</span></span>
+                    </div>
+                    <div class="game-status" id="snakeStatus">Press Start to play!</div>
+                    <div class="snake-controls">
+                        <button class="spooky-button" id="snakeStartBtn">▶️ Start</button>
+                        <button class="spooky-button" id="snakeResetBtn">🔄 Reset</button>
+                    </div>
+                </div>
+                
+                <canvas id="snakeCanvas" width="400" height="400"></canvas>
+                <div class="snake-direction-buttons">
+                    <button class="direction-btn" data-direction="up">⬆️</button>
+                    <div class="direction-row">
+                        <button class="direction-btn" data-direction="left">⬅️</button>
+                        <button class="direction-btn" data-direction="down">⬇️</button>
+                        <button class="direction-btn" data-direction="right">➡️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Whack-a-Ghost Game -->
+            <div class="game-container" id="whack-game">
+                <h3>👊 Whack-a-Ghost 👻</h3>
+                <p class="game-description">Whack the ghosts when they pop up! Be quick before they disappear!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Score: <span id="whackScore">0</span></span>
+                        <span>Time: <span id="whackTime">30</span>s</span>
+                    </div>
+                    <div class="game-status" id="whackStatus">Click Start to begin!</div>
+                    <button class="spooky-button" id="whackStartBtn">▶️ Start</button>
+                </div>
+                
+                <div class="whack-board" id="whackBoard">
+                    <div class="whack-hole" data-hole="0"></div>
+                    <div class="whack-hole" data-hole="1"></div>
+                    <div class="whack-hole" data-hole="2"></div>
+                    <div class="whack-hole" data-hole="3"></div>
+                    <div class="whack-hole" data-hole="4"></div>
+                    <div class="whack-hole" data-hole="5"></div>
+                    <div class="whack-hole" data-hole="6"></div>
+                    <div class="whack-hole" data-hole="7"></div>
+                    <div class="whack-hole" data-hole="8"></div>
+                </div>
+            </div>
+
+            <!-- Simon Says Game -->
+            <div class="game-container" id="simon-game">
+                <h3>🎵 Simon Says 👻</h3>
+                <p class="game-description">Watch the sequence and repeat it! How many rounds can you remember?</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Round: <span id="simonRound">0</span></span>
+                        <span>Best: <span id="simonBest">0</span></span>
+                    </div>
+                    <div class="game-status" id="simonStatus">Press Start to play!</div>
+                    <button class="spooky-button" id="simonStartBtn">▶️ Start</button>
+                </div>
+                
+                <div class="simon-board">
+                    <button class="simon-btn" data-color="red" id="simon-red">🎃</button>
+                    <button class="simon-btn" data-color="green" id="simon-green">👻</button>
+                    <button class="simon-btn" data-color="blue" id="simon-blue">🧙‍♀️</button>
+                    <button class="simon-btn" data-color="yellow" id="simon-yellow">🦇</button>
+                </div>
+            </div>
+
+            <!-- Reaction Test Game -->
+            <div class="game-container" id="reaction-game">
+                <h3>⚡ Reaction Test 👻</h3>
+                <p class="game-description">Click the 👻 ghost as fast as you can when it appears!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Best Time: <span id="reactionBest">--</span>ms</span>
+                        <span>Average: <span id="reactionAvg">--</span>ms</span>
+                    </div>
+                    <div class="game-status" id="reactionStatus">Click Start and wait for the ghost!</div>
+                    <button class="spooky-button" id="reactionStartBtn">▶️ Start</button>
+                </div>
+                
+                <div class="reaction-area" id="reactionArea">
+                    <div class="reaction-target" id="reactionTarget">Wait...</div>
+                </div>
+                
+                <div class="reaction-times" id="reactionTimes"></div>
+            </div>
+
+            <!-- Word Scramble Game -->
+            <div class="game-container" id="scramble-game">
+                <h3>🔤 Halloween Word Scramble 🎃</h3>
+                <p class="game-description">Unscramble the Halloween words! Type your answer below.</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Score: <span id="scrambleScore">0</span></span>
+                        <span>Streak: <span id="scrambleStreak">0</span></span>
+                    </div>
+                    <div class="game-status" id="scrambleStatus"></div>
+                    <button class="spooky-button" id="scrambleNextBtn">🔄 Next Word</button>
+                </div>
+                
+                <div class="scramble-container">
+                    <div class="scrambled-word" id="scrambledWord"></div>
+                    <div class="scramble-hint" id="scrambleHint"></div>
+                    <div class="scramble-input-container">
+                        <input type="text" id="scrambleInput" placeholder="Type your answer here..." autocomplete="off">
+                        <button class="spooky-button" id="scrambleSubmitBtn">✅ Submit</button>
+                    </div>
+                    <div class="scramble-result" id="scrambleResult"></div>
+                </div>
+            </div>
+
+            <!-- Pumpkin Clicker Game -->
+            <div class="game-container" id="clicker-game">
+                <h3>🎃 Pumpkin Clicker 👻</h3>
+                <p class="game-description">Click the pumpkin to collect candy! Upgrade your click power!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Candy: <span id="clickerCandy">0</span> 🍬</span>
+                        <span>Per Click: <span id="clickerPower">1</span></span>
+                    </div>
+                    <div class="game-status" id="clickerStatus">Click the pumpkin to start!</div>
+                </div>
+                
+                <div class="clicker-container">
+                    <div class="clicker-pumpkin" id="clickerPumpkin">🎃</div>
+                    <div class="clicker-score-display" id="clickerScoreDisplay"></div>
+                </div>
+                
+                <div class="clicker-upgrades">
+                    <h4>Upgrades:</h4>
+                    <div class="upgrade-list" id="upgradeList"></div>
+                </div>
+            </div>
+
+            <!-- Pacman Game -->
+            <div class="game-container" id="pacman-game">
+                <h3>👻 Halloween Pacman 🎃</h3>
+                <p class="game-description">Use arrow keys or buttons to move the ghost. Eat all the 🎃 candy to win!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Score: <span id="pacmanScore">0</span></span>
+                        <span>Candy Left: <span id="pacmanCandy">0</span></span>
+                    </div>
+                    <div class="game-status" id="pacmanStatus">Press Start to begin!</div>
+                    <button class="spooky-button" id="pacmanStartBtn">▶️ Start</button>
+                </div>
+                
+                <canvas id="pacmanCanvas" width="600" height="400"></canvas>
+                <div class="pacman-controls">
+                    <button class="direction-btn" data-direction="up">⬆️</button>
+                    <div class="direction-row">
+                        <button class="direction-btn" data-direction="left">⬅️</button>
+                        <button class="direction-btn" data-direction="down">⬇️</button>
+                        <button class="direction-btn" data-direction="right">➡️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Falling Candy Game -->
+            <div class="game-container" id="falling-game">
+                <h3>🍬 Falling Candy 🎃</h3>
+                <p class="game-description">Catch the candy with your basket! Avoid the 🕷️ spiders! Use left/right arrows.</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Score: <span id="fallingScore">0</span></span>
+                        <span>Lives: <span id="fallingLives">3</span> ❤️</span>
+                    </div>
+                    <div class="game-status" id="fallingStatus">Press Start to play!</div>
+                    <button class="spooky-button" id="fallingStartBtn">▶️ Start</button>
+                </div>
+                
+                <canvas id="fallingCanvas" width="400" height="500"></canvas>
+                <div class="falling-controls">
+                    <button class="direction-btn" data-action="left">⬅️ Left</button>
+                    <button class="direction-btn" data-action="right">➡️ Right</button>
+                </div>
+            </div>
+
+            <!-- Ghost Invaders Game -->
+            <div class="game-container" id="invaders-game">
+                <h3>👾 Ghost Invaders 🎃</h3>
+                <p class="game-description">Shoot the ghost invaders! Use arrow keys or buttons to move and space/click to shoot!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Score: <span id="invadersScore">0</span></span>
+                        <span>Wave: <span id="invadersWave">1</span></span>
+                    </div>
+                    <div class="game-status" id="invadersStatus">Press Start to defend!</div>
+                    <button class="spooky-button" id="invadersStartBtn">▶️ Start</button>
+                </div>
+                
+                <canvas id="invadersCanvas" width="600" height="500"></canvas>
+                <div class="invaders-controls">
+                    <button class="direction-btn" data-action="move-left">⬅️</button>
+                    <button class="spooky-button shoot-btn" id="invadersShootBtn">💥 Shoot</button>
+                    <button class="direction-btn" data-action="move-right">➡️</button>
+                </div>
+            </div>
+
+            <!-- Shooter Game -->
+            <div class="game-container" id="shooter-game">
+                <h3>🔫 Halloween Shooter 🎃</h3>
+                <p class="game-description">Move with arrow keys. Click or hold to shoot toward the crosshair. Collect power-ups!</p>
+                
+                <div class="game-info">
+                    <div class="player-info">
+                        <span>Score: <span id="shooterScore">0</span></span>
+                        <span>Lives: <span id="shooterLives">3</span> ❤️</span>
+                        <span>Multiplier: <span id="shooterMultiplier">x1</span></span>
+                    </div>
+                    <div class="game-status" id="shooterStatus">Press Start to play!</div>
+                    <div class="game-status" id="shooterPowerupStatus"></div>
+                    <div class="shooter-controls">
+                        <button class="spooky-button" id="shooterStartBtn">▶️ Start</button>
+                        <button class="spooky-button" id="shooterShootBtn">💥 Shoot</button>
+                        <button class="spooky-button" id="shooterModeBtn">🔁 Auto: ON</button>
+                        <button class="spooky-button" id="shooterResetBtn">🔄 Reset</button>
+                    </div>
+                </div>
+                
+                <canvas id="shooterCanvas" width="600" height="400"></canvas>
+            </div>
+        </section>
+
+        <section class="camera-section">
+            <h2>🎭 Take a Photo with Halloween Costume 🎭</h2>
+            <div class="camera-container">
+                <div class="costume-selector" id="costumeSelector" style="display: none;">
+                    <h3>Choose Your Costume:</h3>
+                    <div class="costume-options">
+                        <button class="costume-btn" data-costume="witch">🧙‍♀️ Witch</button>
+                        <button class="costume-btn" data-costume="vampire">🧛 Vampire</button>
+                        <button class="costume-btn" data-costume="ghost">👻 Ghost</button>
+                        <button class="costume-btn" data-costume="pumpkin">🎃 Pumpkin</button>
+                        <button class="costume-btn" data-costume="bat">🦇 Bat</button>
+                        <button class="costume-btn" data-costume="spider">🕷️ Spider</button>
+                        <button class="costume-btn" data-costume="none">❌ None</button>
+                    </div>
+                </div>
+
+                <div class="camera-preview-container">
+                    <video id="videoPreview" autoplay playsinline style="display: none;"></video>
+                    <canvas id="photoCanvas" style="display: none;"></canvas>
+                    <div class="costume-overlay" id="liveCostumeOverlay" style="display: none;"></div>
+                    <div id="photoResult" class="result-hidden">
+                        <img id="capturedPhoto" alt="Your Halloween photo">
+                        <div class="photo-controls">
+                            <button class="spooky-button" id="downloadButton">💾 Download Photo</button>
+                            <button class="spooky-button" id="retakeButton">🔄 Retake</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="camera-controls">
+                    <button class="spooky-button" id="startCameraButton">📷 Start Camera</button>
+                    <button class="spooky-button" id="captureButton" style="display: none;">📸 Capture Photo</button>
+                    <button class="spooky-button" id="stopCameraButton" style="display: none;">🛑 Stop Camera</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Happy Halloween from Inside Out 2! 🎃👻</p>
+            <p>Developer: Dan Villaco</p>
+            <div class="pumpkins">
+                <span class="pumpkin">🎃</span>
+                <span class="pumpkin">🎃</span>
+                <span class="pumpkin">🎃</span>
+            </div>
+        </footer>
+    </div>
+
+    <div class="floating-elements">
+        <div class="ghost">👻</div>
+        <div class="ghost">👻</div>
+        <div class="ghost">👻</div>
+    </div>
+
+    <!-- Character Modal Popup -->
+    <div id="characterModal" class="character-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="character-image-container">
+                <div class="character-emoji" id="characterEmoji"></div>
+                <img id="characterImage" class="character-image" alt="Character" style="display: none;">
+            </div>
+            <h2 id="characterName"></h2>
+            <p id="characterDescription"></p>
+            <div class="character-fun-fact" id="characterFunFact"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
